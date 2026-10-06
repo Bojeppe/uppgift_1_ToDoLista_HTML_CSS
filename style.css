@@ -1,0 +1,183 @@
+body{
+    background: linear-gradient(360deg,  rgb(253, 130, 128), rgb(254, 197, 196));
+    margin: 0;
+    min-height: 100vh;      /*100 = helöa viewport 50 halva, Fyller hela skärmen på höjden*/
+              /*testa att t abort om den inte duger*/ 
+    justify-content: center;
+    /*padding-top: 5px;       /*får fan ändra pixclarna på topen är den 5-10px ?*/
+    font-family: "Times New Roman", serif;
+}
+
+/*Allt i rutan*/
+.toDoBox{
+    background: white;
+    width: 600px;
+                /*BEHÖVS DE verkligen en min height eller height? ser bättre utan */
+    padding: 30px;
+    margin: auto;
+    
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /*ÄR DET ENS ENM FUCKIN SKUGGAAAA! AAHHH*/
+    text-align: center;
+
+    animation: flyIn 0.5s ease-out forwards;
+    
+}
+
+.toDoAnimationContentStuff{
+    opacity: 0;
+    animation: fadeInConent 0.4s ease-in forwards;
+    animation-delay: 0.5s;     /*delayen ska vara samma som flyIn för då börjar ju den här animationen spelas när stutsen är klar*/
+}
+
+
+h1{
+    margin: 0 0 10px 0;
+    font-size: 45px;
+    
+}
+
+#antalKlara{
+    color: black;
+    margin-bottom: 20px;
+    font-family: arial, sans-serif;
+    /*FONT-size maybe?*/
+}
+
+.inputStuff{
+    display: flex;
+   justify-content: center; /*maybe remove*/ 
+   gap: 7px; /*får se om den här ska vara kvar*/
+}
+
+/*text rutan = input rutan*/
+#numbOfLists{
+font-family: Arial, sans-serif;
+font-size: 18px;                /*text storlek i rutan*/
+padding: 4px;
+height: 35px;
+width: 300px;
+border: 1px solid black;
+border-radius: 3px;
+box-sizing: border-box;
+}
+
+/**/
+.button{
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    padding: 5px 12px;
+    height: 35px;
+    
+    background-color: #eeeeee;
+    border: 1px solid black;
+    border-radius: 3px;
+    cursor:pointer; /*så den ser "klickbar" ut*/
+}
+
+.button:hover{
+    background-color: #dddddd;
+}
+
+
+ul{
+    font-size: 17px;
+    list-style: none;   /*TAR BORT PUNKTERNA SOM fanns i min version utav listan innan...*/
+    padding: 0;     /*TAR bort defaulten basically */
+    margin: 0;
+}
+
+.noText{
+    color: rgb(255, 0, 0);
+    font-family: Arial, sans-serif;         /*ändra så den blir lite lutad*/
+    font-style: italic;
+    font-size: large;
+}
+
+.noText.blinka{
+    animation: errorBlinkRed 0.8s ease 2; /*ETSTA annars så får du göra en .noText.blink */
+}
+
+
+
+
+/*LISTAN*/
+li {    
+    font-family: Arial, bold ,sans-serif; 
+    padding: 8px;
+    margin:6px;
+    
+    cursor: pointer;
+    
+
+}
+
+/*slide upp/ fade in på listaN GREJERN - Lägg till denna i javascipten*/ 
+li.new-item{
+    animation: slideIn 0.4s ease;        /*EASE ? EAS-IN ? EASE-OUT? KANSKWE FRÅGA NÅN VAD DOM ANVÄNDE?*/
+}
+
+/*LIST WRAPPER så soptunnan är åt höger*/
+.li-wrapper{
+    display:flex;
+    justify-content: center;     /*hade space between innan nu blev de center XD, texten/listan blir centrerad som i videon*/
+    align-items: center;
+    gap: 15px;                    /*VÄLJ MÄLLAN 10-15px fuck sake*/
+    
+}
+
+/*horar du över listan så ser vi en svart linje*/
+li:hover .egenText {
+   text-decoration: line-through;
+}
+
+.Klar .egenText{
+    text-decoration: line-through;
+    color: gray;
+    
+}
+
+
+.bara-Toggled .egenText {
+    animation: textFadeToGray 0.4s ease forwards; /*lek runt med detta värde så den blir som på videon... ser lite EXAKT UT maybe 0.2 - 0.5? */
+    
+}
+/*HEla todo listens låda flyger ner + fading in vid starten*/
+@keyframes flyIn{
+    0% { transform: translateY(-100px);}    /*börjar högt uppe*/
+    60%   { transform: translateY(80px);}   /*åker ner till 80px vilket är längre ner än slut positionen */
+    80%     { transform: translateY(10px);}             /*studsar upp igen */
+    90%     { transform: translateY(15px);}             /*lite mer smooth bara*/
+    100% { transform: translateY(20px);}                /*saknatar ner + stannar på slut positionen där den ska vara*/
+
+
+}
+
+/*basically bara så rutan är tom under studsa/åka ner och upp animationen vid start, sen faDAR DEN IN ALLT*/
+@keyframes fadeInConent{   
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+/*fade in och glider uppåt */
+@keyframes slideIn{
+    from {transform: translateY(20px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}
+
+/*markören klar bli går från svart till grå effekten - lägg till nå mer maybe? */
+@keyframes textFadeToGray{
+    from {color: black;}
+    to {color: gray;}
+}
+
+@keyframes errorBlinkRed{
+    0%, 100% {color: red;}
+    50% {color: transparent;}       /*ooh coolt finns ju transparant färg :O crazy */
+
+}
+
+
+
+
+
+

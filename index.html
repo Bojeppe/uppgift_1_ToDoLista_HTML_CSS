@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Uppgift 1 - ToDo list CSS + Animation</title>
+  </head>
+  <body>
+
+    
+    <div class="toDoBox">
+        <div class="toDoAnimationContentStuff">   <!--extra div så jag kan få ändra rätt grejer i stutsa in animationen + så att själva lådan är tom sen blir i fylld efter animationen slutat-->
+            <div class>
+              <h1>My ToDo</h1> 
+            </div>                   <!--rumbriken my todolist-->
+            <p id="antalKlara"> 0 Completed</p>  <!--Antal Klara här i text-->
+
+        <!-- Är alltså textrutan + knappen-->
+        <div class="inputStuff">
+            <input type="text" id="numbOfLists">                <!--input text rutan-->
+            <button class="button" type="button" id="addListBtn">OK</button>    <!--knappen som lägger till-->
+        </div>
+        
+        <p class="noText"  id="noText"></p>
+
+        <!-- UPPGIFTS LISTAN-->
+        <ul id="uppgiftLista"></ul>
+
+      </div>
+    </div>
+    <script src="code.js"></script>
+  </body>
+</html>
